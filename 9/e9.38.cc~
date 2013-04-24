@@ -1,0 +1,15 @@
+#include <vector>
+#include <iostream>
+using std::vector;
+using std::cout;
+using std::endl;
+
+void fill(vector<int>& v) {
+  while (v.size() != v.capacity())
+    v.emplace_back();
+}
+
+int main() {
+  vector<int> vi;
+  cout << vi.capacity << endl;
+  while

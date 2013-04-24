@@ -1,0 +1,30 @@
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <iostream>
+using std::sort;
+using std::partition;
+using std::vector;
+using std::string;
+using std::unique;
+
+void biggies(vector<string>& words, decltype(word.size()) sz) {
+  sort(words.begin(), words.end(),
+       [] (const string& a, const string& b) {
+	 return a.size() < b.size();
+       });
+  auto uni_end = unique(words.begin(), words.end());
+  words.erase(uni_end, words.end());
+  auto pivot = partition(words.begin, uni_end, [sz] (const string& s) { return s < sz; });
+  for_each(pivot, uni_end, [] (const string& s) { cout << s << " "; });
+  cout << endl;
+}
+  
+int main() {
+  vector<string> vec;
+  string s;
+  while (cin >> s)
+    vec.push_back(s);
+  biggies(vec, 5);
+  return 0;
+}
